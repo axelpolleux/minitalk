@@ -1,2 +1,7 @@
-# minitalk
-The purpose of this project is to code a small data exchange program using UNIX signals.
+_This project has been created as part of the 42 curriculum by apolleux_
+
+## Description
+
+## Instructions
+
+## Resources
