@@ -51,5 +51,9 @@ Module.symvers
 Mkfile.old
 dkms.conf
 
+.clangd
+compile_flags.txt
+.vscode
+
 # debug information files
 *.dwo

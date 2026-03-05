@@ -6,12 +6,12 @@
 #    By: apolleux <apolleux@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/03/03 18:50:08 by apolleux          #+#    #+#              #
-#    Updated: 2026/03/05 14:49:40 by apolleux         ###   ########.fr        #
+#    Updated: 2026/03/05 17:40:03 by apolleux         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC 				:= cc
-CFLAGS			:= -Wall -Werror -Wextra
+CFLAGS			:= -Wall -Werror -Wextra -g
 
 INCLUDES_DIR	:= -Iincludes/
 
@@ -34,12 +34,6 @@ server: $(LIBFT) $(PRINTF) $(OBJS)
 client: $(LIBFT) $(PRINTF) $(OBJS)
 	@$(CC) $(CFLAGS) client.o $(INCLUDES_DIR)  $(LIBFT) $(PRINTF) -o client
 
-
-#$(NAME): $(LIBFT) $(PRINTF) $(OBJS)
-#	@server
-#	@client
-#	@echo "\nBuild complete ;)\n"
-
 $(LIBFT):
 	@echo "Libft [COMPILING]"
 	@$(MAKE) -C $(LIBFT_DIR) --no-print-directory
@@ -61,7 +55,7 @@ fclean: clean
 	@echo "Fclean"
 	@$(MAKE) -C $(LIBFT_DIR) clean --no-print-directory
 	@$(MAKE) -C $(PRINTF_DIR) clean --no-print-directory
-	@rm -rf $(NAME)
+	@rm -rf server client
 
 re: fclean all
 
