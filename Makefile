@@ -6,7 +6,7 @@
 #    By: apolleux <apolleux@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/03/03 18:50:08 by apolleux          #+#    #+#              #
-#    Updated: 2026/03/03 19:07:03 by apolleux         ###   ########.fr        #
+#    Updated: 2026/03/05 14:49:40 by apolleux         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,6 @@ CC 				:= cc
 CFLAGS			:= -Wall -Werror -Wextra
 
 INCLUDES_DIR	:= -Iincludes/
-NAME			:= minitalk
 
 LIBFT_DIR		:= includes/libft/
 LIBFT			:= $(LIBFT_DIR)libft.a
@@ -27,11 +26,19 @@ SRCS			:=	server.c\
 
 OBJS			:= $(SRCS:.c=.o)
 
-all: $(NAME)
+all: server client
 
-$(NAME): $(LIBFT) $(PRINTF) $(OBJS)
-	@echo "\nBuild complete ;)\n"
-	@$(CC) $(CFLAGS) $(OBJS) $(INCLUDES_DIR)  $(LIBFT) $(PRINTF) -o $(NAME)
+server: $(LIBFT) $(PRINTF) $(OBJS)
+	@$(CC) $(CFLAGS) server.o $(INCLUDES_DIR)  $(LIBFT) $(PRINTF) -o server
+
+client: $(LIBFT) $(PRINTF) $(OBJS)
+	@$(CC) $(CFLAGS) client.o $(INCLUDES_DIR)  $(LIBFT) $(PRINTF) -o client
+
+
+#$(NAME): $(LIBFT) $(PRINTF) $(OBJS)
+#	@server
+#	@client
+#	@echo "\nBuild complete ;)\n"
 
 $(LIBFT):
 	@echo "Libft [COMPILING]"
