@@ -6,14 +6,13 @@
 /*   By: apolleux <apolleux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/03 18:24:36 by apolleux          #+#    #+#             */
-/*   Updated: 2026/03/07 00:10:10 by apolleux         ###   ########.fr       */
+/*   Updated: 2026/03/07 00:16:35 by apolleux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf/ft_printf.h"
 #include "libft/libft.h"
 #include "minitalk_bonus.h"
-#include <signal.h>
 
 static void	join_doe(char character)
 {
