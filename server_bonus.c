@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   server.c                                           :+:      :+:    :+:   */
+/*   server_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: apolleux <apolleux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/03 18:24:36 by apolleux          #+#    #+#             */
-/*   Updated: 2026/03/06 22:57:04 by apolleux         ###   ########.fr       */
+/*   Updated: 2026/03/06 23:21:21 by apolleux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf/ft_printf.h"
 #include "libft/libft.h"
-#include "minitalk.h"
+#include "minitalk_bonus.h"
 
 static void	join_doe(char character)
 {
