@@ -6,7 +6,7 @@
 /*   By: apolleux <apolleux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/03 18:24:36 by apolleux          #+#    #+#             */
-/*   Updated: 2026/03/06 22:57:04 by apolleux         ###   ########.fr       */
+/*   Updated: 2026/03/06 23:32:33 by apolleux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,8 +61,7 @@ static void	handle_signal(int signal)
 
 int	main(void)
 {
-	//struct sigaction	sig_action;
-	int					pid;
+	int	pid;
 
 	pid = getpid();
 	ft_printf("Process ID: %d\n", pid);

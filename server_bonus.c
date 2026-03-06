@@ -6,13 +6,14 @@
 /*   By: apolleux <apolleux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/03 18:24:36 by apolleux          #+#    #+#             */
-/*   Updated: 2026/03/06 23:21:21 by apolleux         ###   ########.fr       */
+/*   Updated: 2026/03/07 00:10:10 by apolleux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf/ft_printf.h"
 #include "libft/libft.h"
 #include "minitalk_bonus.h"
+#include <signal.h>
 
 static void	join_doe(char character)
 {
@@ -42,11 +43,12 @@ static void	join_doe(char character)
 	}
 }
 
-static void	handle_signal(int signal)
+static void	handle_signal(int signal, siginfo_t *info, void *context)
 {
 	static unsigned char	temp_char = 0;
 	static int				bits = 8;
 
+	(void)context;
 	temp_char <<= 1;
 	if (signal == SIGUSR2)
 		temp_char++;
@@ -57,17 +59,20 @@ static void	handle_signal(int signal)
 		temp_char = 0;
 		bits = 8;
 	}
+	kill(info->si_pid, SIGUSR1);
 }
 
 int	main(void)
 {
-	//struct sigaction	sig_action;
+	struct sigaction	sa;
 	int					pid;
 
 	pid = getpid();
 	ft_printf("Process ID: %d\n", pid);
-	signal(SIGUSR1, handle_signal);
-	signal(SIGUSR2, handle_signal);
+	sa.sa_sigaction = handle_signal;
+	sa.sa_flags = SA_SIGINFO;
+	sigaction(SIGUSR1, &sa, NULL);
+	sigaction(SIGUSR2, &sa, NULL);
 	while (1)
 		pause();
 	return (0);

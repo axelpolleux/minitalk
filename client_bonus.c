@@ -6,13 +6,24 @@
 /*   By: apolleux <apolleux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/03 18:24:31 by apolleux          #+#    #+#             */
-/*   Updated: 2026/03/06 22:57:22 by apolleux         ###   ########.fr       */
+/*   Updated: 2026/03/07 00:12:11 by apolleux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf/ft_printf.h"
 #include "libft/libft.h"
 #include "minitalk_bonus.h"
+#include <signal.h>
+
+volatile sig_atomic_t	g_server_ready = 0;
+
+static void	sig_server(int signal)
+{
+	if (signal == SIGUSR1)
+		g_server_ready = 1;
+	else if (signal == SIGUSR2)
+		ft_printf("Message sent to server\n");
+}
 
 static void	send_signal(int pid, unsigned char bit)
 {
@@ -24,13 +35,14 @@ static void	send_signal(int pid, unsigned char bit)
 	while (i > 0)
 	{
 		i--;
+		g_server_ready = 0;
 		if ((c >> i) & 1)
 			kill(pid, SIGUSR2);
 		else
 			kill(pid, SIGUSR1);
-		usleep(1000);
+		while (!g_server_ready)
+			pause();
 	}
-	return ;
 }
 
 int	main(int argc, char **argv)
@@ -38,6 +50,8 @@ int	main(int argc, char **argv)
 	int		pid;
 	char	*str;
 
+	signal(SIGUSR1, sig_server);
+	signal(SIGUSR2, sig_server);
 	if (argc == 3)
 	{
 		pid = ft_atoi(argv[1]);
