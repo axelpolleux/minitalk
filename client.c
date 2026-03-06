@@ -6,15 +6,15 @@
 /*   By: apolleux <apolleux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/03 18:24:31 by apolleux          #+#    #+#             */
-/*   Updated: 2026/03/05 18:17:53 by apolleux         ###   ########.fr       */
+/*   Updated: 2026/03/06 22:02:37 by apolleux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf/ft_printf.h"
 #include "libft/libft.h"
-#include <signal.h>
+#include "minitalk.h"
 
-void	send_signal(int pid, unsigned char bit)
+static void	send_signal(int pid, unsigned char bit)
 {
 	int				i;
 	unsigned char	c;
@@ -28,8 +28,8 @@ void	send_signal(int pid, unsigned char bit)
 			kill(pid, SIGUSR2);
 		else
 			kill(pid, SIGUSR1);
+		usleep(1000);
 	}
-	usleep(42);
 	return ;
 }
 
@@ -46,8 +46,12 @@ int	main(int argc, char **argv)
 		str = argv[2];
 		while (*str)
 			send_signal(pid, *str++);
+		send_signal(pid, '\0');
 	}
 	else
-		ft_printf("Invalid execution");
+	{
+		ft_printf("Invalid execution: ./client <pid> <message>\n");
+		exit(0);
+	}
 	return (0);
 }
