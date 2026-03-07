@@ -6,13 +6,15 @@
 /*   By: apolleux <apolleux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/03 18:24:36 by apolleux          #+#    #+#             */
-/*   Updated: 2026/03/06 23:32:33 by apolleux         ###   ########.fr       */
+/*   Updated: 2026/03/07 20:23:49 by apolleux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf/ft_printf.h"
 #include "libft/libft.h"
 #include "minitalk.h"
+
+t_tab	g_tab;
 
 static void	join_doe(char character)
 {
@@ -64,6 +66,8 @@ int	main(void)
 	int	pid;
 
 	pid = getpid();
+	g_tab.size = 0;
+	g_tab.capacity = 10;
 	ft_printf("Process ID: %d\n", pid);
 	signal(SIGUSR1, handle_signal);
 	signal(SIGUSR2, handle_signal);

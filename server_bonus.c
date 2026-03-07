@@ -6,7 +6,7 @@
 /*   By: apolleux <apolleux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/03 18:24:36 by apolleux          #+#    #+#             */
-/*   Updated: 2026/03/07 00:16:35 by apolleux         ###   ########.fr       */
+/*   Updated: 2026/03/07 20:10:37 by apolleux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "libft/libft.h"
 #include "minitalk_bonus.h"
 
-static void	join_doe(char character)
+static void	join_doe(char character, siginfo_t *info)
 {
 	static char	*res;
 	char		*tmp;
@@ -26,6 +26,8 @@ static void	join_doe(char character)
 		write(1, &"\n", 1);
 		free(res);
 		res = NULL;
+		kill(info->si_pid, SIGUSR2);
+
 	}
 	else
 	{
@@ -54,7 +56,7 @@ static void	handle_signal(int signal, siginfo_t *info, void *context)
 	bits--;
 	if (bits == 0)
 	{
-		join_doe(temp_char);
+		join_doe(temp_char, info);
 		temp_char = 0;
 		bits = 8;
 	}
