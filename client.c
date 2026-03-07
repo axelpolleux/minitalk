@@ -6,7 +6,7 @@
 /*   By: apolleux <apolleux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/03 18:24:31 by apolleux          #+#    #+#             */
-/*   Updated: 2026/03/06 22:54:10 by apolleux         ###   ########.fr       */
+/*   Updated: 2026/03/07 16:41:47 by apolleux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static void	send_signal(int pid, unsigned char bit)
 			kill(pid, SIGUSR2);
 		else
 			kill(pid, SIGUSR1);
-		usleep(1000);
+		usleep(300);
 	}
 	return ;
 }

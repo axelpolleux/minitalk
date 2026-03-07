@@ -6,7 +6,7 @@
 #    By: apolleux <apolleux@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/03/03 18:50:08 by apolleux          #+#    #+#              #
-#    Updated: 2026/03/06 23:02:05 by apolleux         ###   ########.fr        #
+#    Updated: 2026/03/07 16:41:23 by apolleux         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -67,8 +67,8 @@ clean:
 
 fclean: clean
 	@echo "Fclean"
-	@$(MAKE) -C $(LIBFT_DIR) clean --no-print-directory
-	@$(MAKE) -C $(PRINTF_DIR) clean --no-print-directory
+	@$(MAKE) -C $(LIBFT_DIR) fclean --no-print-directory
+	@$(MAKE) -C $(PRINTF_DIR) fclean --no-print-directory
 	@rm -rf server client 
 	@rm -rf server_bonus client_bonus
 

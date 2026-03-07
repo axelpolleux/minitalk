@@ -6,7 +6,7 @@
 /*   By: apolleux <apolleux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/03 18:24:31 by apolleux          #+#    #+#             */
-/*   Updated: 2026/03/07 00:12:11 by apolleux         ###   ########.fr       */
+/*   Updated: 2026/03/07 16:40:34 by apolleux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,10 @@ volatile sig_atomic_t	g_server_ready = 0;
 static void	sig_server(int signal)
 {
 	if (signal == SIGUSR1)
+	{
 		g_server_ready = 1;
-	else if (signal == SIGUSR2)
 		ft_printf("Message sent to server\n");
+	}
 }
 
 static void	send_signal(int pid, unsigned char bit)
