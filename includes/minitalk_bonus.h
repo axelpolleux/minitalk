@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minitalk_bonus.h                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: apolleux <apolleux@student.42.fr>          +#+  +:+       +#+        */
+/*   By: axel <axel@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/03 18:24:57 by apolleux          #+#    #+#             */
-/*   Updated: 2026/03/07 16:38:50 by apolleux         ###   ########.fr       */
+/*   Updated: 2026/03/08 18:28:47 by axel             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,5 +16,12 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <signal.h>
+
+typedef struct s_tab
+{
+	int		size;
+	int		capacity;
+	char	*string;
+}	t_tab;
 
 #endif
