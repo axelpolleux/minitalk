@@ -6,7 +6,7 @@
 /*   By: axel <axel@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/03 18:24:36 by apolleux          #+#    #+#             */
-/*   Updated: 2026/03/08 18:34:50 by axel             ###   ########.fr       */
+/*   Updated: 2026/03/08 18:37:53 by axel             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ static void	join_doe(char character)
 		write(1, g_tab.string, g_tab.size);
 		write(1, &"\n", 1);
 		free(g_tab.string);
-		g_tab.string = NULL;
+		//g_tab.string = NULL;
 	}
 	else
 		table_management(character);
