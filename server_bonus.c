@@ -6,7 +6,7 @@
 /*   By: axel <axel@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/03 18:24:36 by apolleux          #+#    #+#             */
-/*   Updated: 2026/03/08 20:43:49 by axel             ###   ########.fr       */
+/*   Updated: 2026/03/08 20:53:00 by axel             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static void	table_management(char character)
 		new_string = ft_calloc(g_tab.capacity, sizeof(char));
 		if (!new_string)
 			return ;
-		ft_strlcpy(new_string, g_tab.string, g_tab.size);
+		ft_strlcpy(new_string, g_tab.string, g_tab.size + 1);
 		free(g_tab.string);
 		g_tab.string = new_string;
 	}
@@ -75,14 +75,16 @@ int	main(void)
 	int					pid;
 
 	pid = getpid();
-		g_tab.size = 0;
+	g_tab.size = 0;
 	g_tab.capacity = 10;
 	g_tab.string = ft_calloc(g_tab.capacity, sizeof(char));
 	if (!g_tab.string)
 		return (0);
 	ft_printf("Process ID: %d\n", pid);
+	ft_bzero(&sa, sizeof(sa));
 	sa.sa_sigaction = handle_signal;
 	sa.sa_flags = SA_SIGINFO;
+	sigemptyset(&sa.sa_mask);
 	sigaction(SIGUSR1, &sa, NULL);
 	sigaction(SIGUSR2, &sa, NULL);
 	while (1)
