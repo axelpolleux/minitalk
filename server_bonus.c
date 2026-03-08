@@ -6,7 +6,7 @@
 /*   By: axel <axel@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/03 18:24:36 by apolleux          #+#    #+#             */
-/*   Updated: 2026/03/08 20:31:23 by axel             ###   ########.fr       */
+/*   Updated: 2026/03/08 20:43:49 by axel             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,11 @@ int	main(void)
 	int					pid;
 
 	pid = getpid();
+		g_tab.size = 0;
+	g_tab.capacity = 10;
+	g_tab.string = ft_calloc(g_tab.capacity, sizeof(char));
+	if (!g_tab.string)
+		return (0);
 	ft_printf("Process ID: %d\n", pid);
 	sa.sa_sigaction = handle_signal;
 	sa.sa_flags = SA_SIGINFO;
