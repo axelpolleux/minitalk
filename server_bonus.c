@@ -6,7 +6,7 @@
 /*   By: axel <axel@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/03 18:24:36 by apolleux          #+#    #+#             */
-/*   Updated: 2026/03/08 20:53:00 by axel             ###   ########.fr       */
+/*   Updated: 2026/03/08 21:02:13 by axel             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,13 @@
 #include "minitalk_bonus.h"
 
 t_tab	g_tab;
+
+static void	cleanup(int signal)
+{
+	if (signal == SIGINT)
+		free(g_tab.string);
+	exit (0);
+}
 
 static void	table_management(char character)
 {
@@ -87,6 +94,7 @@ int	main(void)
 	sigemptyset(&sa.sa_mask);
 	sigaction(SIGUSR1, &sa, NULL);
 	sigaction(SIGUSR2, &sa, NULL);
+	signal(SIGINT, cleanup);
 	while (1)
 		pause();
 	return (0);
