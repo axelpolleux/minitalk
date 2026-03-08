@@ -6,7 +6,7 @@
 /*   By: axel <axel@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/03 18:24:36 by apolleux          #+#    #+#             */
-/*   Updated: 2026/03/08 19:54:50 by axel             ###   ########.fr       */
+/*   Updated: 2026/03/08 20:31:12 by axel             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ static void	table_management(char character)
 {
 	char	*new_string;
 
-	g_tab.size++;
 	if (g_tab.size >= g_tab.capacity - 1)
 	{
 		g_tab.capacity *= 2;
@@ -32,6 +31,7 @@ static void	table_management(char character)
 		g_tab.string = new_string;
 	}
 	g_tab.string[g_tab.size] = character;
+	g_tab.size++;
 }
 
 static void	join_doe(char character)
