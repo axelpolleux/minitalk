@@ -6,7 +6,7 @@
 /*   By: axel <axel@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/03 18:24:36 by apolleux          #+#    #+#             */
-/*   Updated: 2026/03/08 18:27:09 by axel             ###   ########.fr       */
+/*   Updated: 2026/03/08 18:34:50 by axel             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static void	table_management(char character)
 	char	*new_string;
 
 	g_tab.size++;
-	if (g_tab.size >= g_tab.capacity - 1)
+	if (g_tab.size >= g_tab.capacity)
 	{
 		g_tab.capacity *= 2;
 		new_string = ft_calloc(g_tab.capacity, sizeof(char));
