@@ -6,7 +6,7 @@
 /*   By: axel <axel@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/03 18:24:36 by apolleux          #+#    #+#             */
-/*   Updated: 2026/03/08 18:26:57 by axel             ###   ########.fr       */
+/*   Updated: 2026/03/08 19:54:46 by axel             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ static void	table_management(char character)
 		ft_strlcpy(new_string, g_tab.string, g_tab.size);
 		free(g_tab.string);
 		g_tab.string = new_string;
-		free(new_string);
 	}
 	g_tab.string[g_tab.size] = character;
 }
@@ -42,9 +41,11 @@ static void	join_doe(char character, siginfo_t *info)
 	if (character == '\0')
 	{
 		write(1, g_tab.string, g_tab.size);
-		write(1, &"\n", 1);
+		write(1, "\n", 1);
 		free(g_tab.string);
-		g_tab.string = NULL;
+		g_tab.capacity = 10;
+		g_tab.size = 0;
+		g_tab.string = ft_calloc(g_tab.capacity, sizeof(char));
 		kill(info->si_pid, SIGUSR2);
 	}
 	else
